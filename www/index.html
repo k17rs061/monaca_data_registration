@@ -41,12 +41,14 @@
           var TestClass = ncmb.DataStore("TestClass");
           TestClass.fetchAll()
           .then(function(results){
-            var msg=" ";
+            var msg="<table border='1' rules='all'>";
+            msg+="<tr><th>message</th><th>Update Date</th></tr>"
             for(var i=0;i<results.length;i++){
               var data=results[i].get("message");
               var update=results[i].get("updateDate");
-              msg+=data+":"+update;
+              msg+="<tr><td>"+data+"</td><td>"+update+"</td></tr>";
             }
+            msg+="</table>";
             $("#fetch").html(msg);
           })
         }
@@ -60,6 +62,11 @@
     <div>fetch demo</div>
     <a class="button--large" onclick="fetchAll()">fetch All</a>
     <div>fetch all demo</div>
-  <div id="fetch">data here</div>
+    <div id="fetch">data here</div>
+    <table border='1' rules='all'>
+      <tr><th>message</th><th>Update Date</th></tr>
+      <tr><td>Hello</td><td>2018-11-19T04:40:52.232Z</td></tr>
+      <tr><td>Hello</td><td>2018-11-12T05:09:29:166Z</td></tr>
+    </table>
 </body>
 </html>
